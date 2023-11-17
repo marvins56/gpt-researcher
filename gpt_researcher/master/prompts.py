@@ -21,22 +21,37 @@ def generate_report_prompt(question, context, report_format="apa", total_words=1
 
     return f'Information: """{context}"""\n\n' \
            f'Using the above information, answer the following' \
-           f' query or task: "{question}" in a detailed report --' \
-           " The report should focus on the answer to the query, should be well structured, informative," \
-           f" in depth and comprehensive, with facts and numbers if available and a minimum of {total_words} words.\n" \
-           "You should strive to write the report as long as you can using all relevant and necessary information provided.\n" \
-           "You must write the report with markdown syntax.\n " \
-           f"Use an unbiased and journalistic tone. \n" \
-           "You MUST determine your own concrete and valid opinion based on the given information. Do NOT deter to general and meaningless conclusions.\n" \
-           f"You MUST write all used source urls at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each.\n" \
+           f' medical query or task: "{question}" in a detailed report --' \
+           " The report should focus on the medical aspects of the query, should be well structured, informative," \
+           f" in depth and comprehensive, with medical facts and numbers if available and a minimum of {total_words} words.\n" \
+           "You should strive to write the report as long as you can using all relevant and necessary medical information provided.\n" \
+           "You must write the report with medical terminology and markdown syntax.\n " \
+           f"Use an unbiased and medical professional tone. \n" \
+           "You MUST determine your own concrete and valid medical opinion based on the given information. Do NOT deter to general and meaningless medical conclusions.\n" \
+           f"You MUST write all used medical source urls at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each.\n" \
            f"You MUST write the report in {report_format} format.\n " \
-            f"Cite search results using inline notations. Only cite the most \
-            relevant results that answer the query accurately. Place these citations at the end \
+            f"Cite medical search results using inline notations. Only cite the most \
+            relevant medical results that answer the query accurately. Place these citations at the end \
             of the sentence or paragraph that reference them.\n"\
-            f"Please do your best, this is very important to my career. " \
+            f"Please do your best, this is very important to my medical career and the patients this data will affect " \
             f"Assume that the current date is {datetime.now().strftime('%B %d, %Y')}"
 
-
+# return f'Information: """{context}"""\n\n' \
+#            f'Using the above information, answer the following' \
+#            f' query or task: "{question}" in a detailed report --' \
+#            " The report should focus on the answer to the query, should be well structured, informative," \
+#            f" in depth and comprehensive, with facts and numbers if available and a minimum of {total_words} words.\n" \
+#            "You should strive to write the report as long as you can using all relevant and necessary information provided.\n" \
+#            "You must write the report with markdown syntax.\n " \
+#            f"Use an unbiased and journalistic tone. \n" \
+#            "You MUST determine your own concrete and valid opinion based on the given information. Do NOT deter to general and meaningless conclusions.\n" \
+#            f"You MUST write all used source urls at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each.\n" \
+#            f"You MUST write the report in {report_format} format.\n " \
+#             f"Cite search results using inline notations. Only cite the most \
+#             relevant results that answer the query accurately. Place these citations at the end \
+#             of the sentence or paragraph that reference them.\n"\
+#             f"Please do your best, this is very important to my career. " \
+#             f"Assume that the current date is {datetime.now().strftime('%B %d, %Y')}"
 def generate_resource_report_prompt(question, context, report_format="apa", total_words=1000):
     """Generates the resource report prompt for the given question and research summary.
 
@@ -86,23 +101,17 @@ def auto_agent_instructions():
         The server is determined by the field of the topic and the specific name of the server that could be utilized to research the topic provided. Agents are categorized by their area of expertise, and each server type is associated with a corresponding emoji.
 
         examples:
-        task: "should I invest in apple stocks?"
+        task: "understanding cancer treatment options"
         response: 
         {
-            "server": "💰 Finance Agent",
-            "agent_role_prompt: "You are a seasoned finance analyst AI assistant. Your primary goal is to compose comprehensive, astute, impartial, and methodically arranged financial reports based on provided data and trends."
+            "server": "🔬 Oncology Agent",
+            "agent_role_prompt: "You are an AI medical assistant researcher. Your primary goal is to provide accurate, evidence-based, and comprehensive analysis and reports on cancer research and related topics."
         }
-        task: "could reselling sneakers become profitable?"
+        task: "exploring sickle cell disease management"
         response: 
         { 
-            "server":  "📈 Business Analyst Agent",
-            "agent_role_prompt": "You are an experienced AI business analyst assistant. Your main objective is to produce comprehensive, insightful, impartial, and systematically structured business reports based on provided business data, market trends, and strategic analysis."
-        }
-        task: "what are the most interesting sites in Tel Aviv?"
-        response:
-        {
-            "server:  "🌍 Travel Agent",
-            "agent_role_prompt": "You are a world-travelled AI tour guide assistant. Your main purpose is to draft engaging, insightful, unbiased, and well-structured travel reports on given locations, including history, attractions, and cultural insights."
+            "server":  "🩸 Hematology Agent",
+            "agent_role_prompt": "You are an AI medical assistant researcher. Your primary goal is to provide accurate, evidence-based, and comprehensive analysis and reports on sickle cell disease research and related topics."
         }
     """
 
